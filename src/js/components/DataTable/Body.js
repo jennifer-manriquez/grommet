@@ -134,6 +134,7 @@ const Body = forwardRef(
       columns,
       data,
       onMore,
+      moreButton,
       replace,
       onClickRow,
       onSelect,
@@ -191,6 +192,7 @@ const Body = forwardRef(
           <InfiniteScroll
             items={data}
             onMore={onMore}
+            moreButton={moreButton}
             replace={replace}
             renderMarker={(marker) => (
               <TableRow>

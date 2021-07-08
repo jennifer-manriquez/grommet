@@ -17,6 +17,7 @@ const InfiniteScroll = ({
   onMore,
   renderMarker,
   replace,
+  moreButton = false,
   show,
   step = 50,
 }) => {
@@ -137,6 +138,7 @@ const InfiniteScroll = ({
   useEffect(() => {
     if (
       onMore &&
+      !moreButton &&
       renderPageBounds[1] === lastPage &&
       items.length >= pendingLength
     ) {
@@ -145,7 +147,15 @@ const InfiniteScroll = ({
       setPendingLength(items.length + 1);
       onMore();
     }
-  }, [items.length, lastPage, onMore, pendingLength, renderPageBounds, step]);
+  }, [
+    items.length,
+    lastPage,
+    onMore,
+    pendingLength,
+    renderPageBounds,
+    step,
+    moreButton,
+  ]);
 
   useEffect(() => {
     if (items.length === 0 && lastPage === 0 && pendingLength !== 0) {
